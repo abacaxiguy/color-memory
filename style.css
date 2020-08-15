@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: "Indie Flower", cursive;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 4rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+
+    background-image: linear-gradient(90deg, #5a1dd3, #f21040, #fc2fbd);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+}
+
+.buttons-container {
+    margin-top: 1rem;
+    display: flex;
+}
+
+.color {
+    height: 33rem;
+    flex-grow: 1;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* COLORS COLORS COLORS */
+/* COLORS COLORS COLORS */
+/* COLORS COLORS COLORS */
+
+.color.one {
+    background: #1d064d;
+}
+.color.two {
+    background: #7c7a02;
+}
+.color.three {
+    background: #530213;
+}
+.color.four {
+    background: #035f28;
+}
+.color.five {
+    background: #742503;
+}
+.color.six {
+    background: #6e044e;
+}
+.color.one.active {
+    background: #5a1dd3;
+}
+.color.two.active {
+    background: #f1ee18;
+}
+.color.three.active {
+    background: #f21040;
+}
+.color.four.active {
+    background: #13fa70;
+}
+.color.five.active {
+    background: #ed6024;
+}
+.color.six.active {
+    background: #fc2fbd;
+}
+
+/* END OF COLORS */
+/* END OF COLORS */
+/* END OF COLORS */
+
+.level {
+    display: flex;
+    flex-flow: row-reverse;
+    margin: 3% 7% 0 0;
+    font-size: 3rem;
+}
+
+.start-container {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.start {
+    border: 3px solid #5a1dd3;
+    color: #5a1dd3;
+    padding: 1rem 1.7rem;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start:hover {
+    background: #5a1dd3;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+    .buttons-container {
+        flex-wrap: wrap;
+    }
+    .color {
+        height: 15rem;
+        width: 30%;
+        border: 3px solid white;
+        flex-grow: 1;
+    }
+}
