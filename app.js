@@ -3,15 +3,15 @@
 // lets try to do a function
 // why?, idk
 
-const sequence = [],
-    colors = document.querySelectorAll(".color"),
+const colors = document.querySelectorAll(".color"),
     audios = document.querySelectorAll("audio"),
     start = document.querySelector(".start"),
     errorAudio = document.querySelector(".error");
 
 let playerTurn = false,
-    timesClicked = 0,
-    level = 1;
+    timesClicked = -1,
+    level = 1,
+    sequence = [];
 
 function addNewColor() {
     let random = Math.floor(Math.random() * 6);
@@ -42,12 +42,15 @@ function playAllSequence(number) {
         else {
             playerTurn = true;
             toggleColorClick(false);
+            timesClicked = -1;
         }
     }, 1000);
 }
 
 function letPlayerClick(e) {
     if (!playerTurn) return;
+
+    timesClicked++;
 
     e.target.classList.add("active");
 
@@ -62,7 +65,7 @@ function letPlayerClick(e) {
 
     if (e.target.getAttribute("data-color") != sequence[timesClicked]) {
         youLost();
-    } else {
+    } else if (timesClicked == sequence.length - 1) {
         addNewColor();
         level++;
         putLevelNumber(level);
@@ -70,15 +73,15 @@ function letPlayerClick(e) {
             playAllSequence(0);
         }, 2000);
     }
-    timesClicked++;
 }
 
 function youLost() {
     errorAudio.play();
-    timesClicked = 0;
+    timesClicked = -1;
     toggleColorClick(true);
     start.classList.remove("playing");
     start.innerHTML = "Start";
+    level = 0;
     putLevelNumber(0);
     sequence = [];
 }
