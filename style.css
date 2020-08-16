@@ -111,14 +111,22 @@
 }
 
 @media (max-width: 768px) {
+    .start {
+        font-size: 1rem;
+        border-width: 2px;
+    }
+    .level {
+        font-size: 1.4rem;
+        margin-top: 10%;
+    }
     .title {
-        font-size: 3rem;
+        font-size: 2rem;
     }
     .buttons-container {
         flex-wrap: wrap;
     }
     .color {
-        height: 15rem;
+        height: 8.5rem;
         width: 30%;
         border: 3px solid white;
         flex-grow: 1;

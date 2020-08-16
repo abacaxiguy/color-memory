@@ -19,6 +19,7 @@ function addNewColor() {
 }
 
 function playAllSequence(number) {
+    start.innerHTML = "Playing...";
     toggleColorClick(true);
 
     let i = sequence[number];
@@ -43,6 +44,7 @@ function playAllSequence(number) {
             playerTurn = true;
             toggleColorClick(false);
             timesClicked = -1;
+            start.innerHTML = "Click!";
         }
     }, 1000);
 }
