@@ -23,8 +23,6 @@ function playAllSequence(number) {
     toggleColorClick(true);
 
     let i = sequence[number];
-    console.log("o que eu tenho q clickar: ", i);
-    console.log(sequence);
 
     colors.forEach((c) => {
         if (c.getAttribute("data-color") == i) c.classList.add("active");
