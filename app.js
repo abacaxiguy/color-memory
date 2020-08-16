@@ -1,0 +1,114 @@
+// Math.floor(Math.random() * 6);
+
+// lets try to do a function
+// why?, idk
+
+const sequence = [],
+    colors = document.querySelectorAll(".color"),
+    audios = document.querySelectorAll("audio"),
+    start = document.querySelector(".start"),
+    errorAudio = document.querySelector(".error");
+
+let playerTurn = false,
+    timesClicked = 0,
+    level = 1;
+
+function addNewColor() {
+    let random = Math.floor(Math.random() * 6);
+    sequence.push(random);
+}
+
+function playAllSequence(number) {
+    toggleColorClick(true);
+
+    let i = sequence[number];
+    console.log("o que eu tenho q clickar: ", i);
+    console.log(sequence);
+
+    colors.forEach((c) => {
+        if (c.getAttribute("data-color") == i) c.classList.add("active");
+    });
+    audios.forEach((a) => {
+        if (a.getAttribute("data-audio") == i) a.play();
+    });
+
+    setTimeout(() => {
+        colors.forEach((c) => {
+            if (c.getAttribute("data-color") == i) c.classList.remove("active");
+        });
+        number++;
+
+        if (number < sequence.length) playAllSequence(number);
+        else {
+            playerTurn = true;
+            toggleColorClick(false);
+        }
+    }, 1000);
+}
+
+function letPlayerClick(e) {
+    if (!playerTurn) return;
+
+    e.target.classList.add("active");
+
+    audios.forEach((a) => {
+        if (a.getAttribute("data-audio") == e.target.getAttribute("data-color"))
+            a.play();
+    });
+
+    setTimeout(() => {
+        e.target.classList.remove("active");
+    }, 500);
+
+    if (e.target.getAttribute("data-color") != sequence[timesClicked]) {
+        youLost();
+    } else {
+        addNewColor();
+        level++;
+        putLevelNumber(level);
+        setTimeout(() => {
+            playAllSequence(0);
+        }, 2000);
+    }
+    timesClicked++;
+}
+
+function youLost() {
+    errorAudio.play();
+    timesClicked = 0;
+    toggleColorClick(true);
+    start.classList.remove("playing");
+    start.innerHTML = "Start";
+    putLevelNumber(0);
+    sequence = [];
+}
+
+function putLevelNumber(n) {
+    const level = document.querySelector(".level");
+    level.innerText = `Level: ${n}`;
+}
+
+function toggleColorClick(state) {
+    if (state)
+        colors.forEach((c) => {
+            c.classList.add("playing");
+        });
+    else
+        colors.forEach((c) => {
+            c.classList.remove("playing");
+        });
+}
+
+start.addEventListener("click", starting);
+
+colors.forEach((c) => {
+    c.addEventListener("click", letPlayerClick);
+});
+
+function starting() {
+    start.classList.add("playing");
+    start.innerHTML = "Playing...";
+    putLevelNumber(1);
+    addNewColor();
+    playAllSequence(0);
+}
