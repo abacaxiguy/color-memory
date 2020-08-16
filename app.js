@@ -117,3 +117,18 @@ function starting() {
     addNewColor();
     playAllSequence(0);
 }
+
+function toggleDarkMode() {
+    const elements = ["body", ".color", ".level", ".dark-button"];
+    elements.forEach((el) => {
+        el = document.querySelectorAll(el);
+        el.forEach((e) => {
+            if (e.classList.contains("dark")) e.classList.remove("dark");
+            else e.classList.add("dark");
+        });
+    });
+}
+
+document
+    .querySelector(".dark-button")
+    .addEventListener("click", toggleDarkMode);
