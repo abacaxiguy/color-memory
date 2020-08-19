@@ -14,8 +14,14 @@ let playerTurn = false,
     sequence = [];
 
 function addNewColor() {
-    let random = Math.floor(Math.random() * 6);
-    if (random != sequence[sequence.length - 1]) sequence.push(random);
+    let isConsecutive = false;
+    while (!isConsecutive) {
+        let random = Math.floor(Math.random() * 6);
+        if (random != sequence[sequence.length - 1]) {
+            sequence.push(random);
+            isConsecutive = true;
+        }
+    }
 }
 
 function playAllSequence(number) {
