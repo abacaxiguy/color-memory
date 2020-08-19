@@ -15,7 +15,7 @@ let playerTurn = false,
 
 function addNewColor() {
     let random = Math.floor(Math.random() * 6);
-    sequence.push(random);
+    if (random != sequence[sequence.length - 1]) sequence.push(random);
 }
 
 function playAllSequence(number) {
