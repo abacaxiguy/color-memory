@@ -87,6 +87,8 @@ function youLost() {
     toggleColorClick(true);
     start.classList.remove("playing");
     start.innerHTML = "Start";
+    setScore(level);
+    displayHiscore();
     level = 0;
     putLevelNumber(0);
     sequence = [];
@@ -136,3 +138,22 @@ function toggleDarkMode() {
 document
     .querySelector(".dark-button")
     .addEventListener("click", toggleDarkMode);
+
+function setScore(score) {
+    let scoreStored = getScore();
+    if (scoreStored > score) return;
+    localStorage.setItem("hiscore", "" + score);
+}
+
+function getScore() {
+    return parseInt(localStorage.getItem("hiscore"));
+}
+
+function displayHiscore() {
+    const span = document.querySelector(".highscore");
+    let scoreStored = getScore();
+
+    span.innerHTML = scoreStored;
+}
+
+displayHiscore();
