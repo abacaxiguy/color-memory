@@ -78,10 +78,18 @@
 /* END OF COLORS */
 
 .level {
-    display: flex;
-    flex-flow: row-reverse;
     margin: 3% 7% 0 0;
+}
+
+.highscore {
+    margin: 3% 0 0 7%;
+}
+
+header {
     font-size: 3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
 }
 
 .start-container {
@@ -116,7 +124,7 @@
         font-size: 1rem;
         border-width: 2px;
     }
-    .level {
+    header {
         font-size: 1.4rem;
         margin-top: 10%;
     }

@@ -120,6 +120,7 @@ function starting() {
     start.classList.add("playing");
     start.innerHTML = "Playing...";
     putLevelNumber(1);
+    displayHiscore();
     addNewColor();
     playAllSequence(0);
 }
@@ -146,14 +147,12 @@ function setScore(score) {
 }
 
 function getScore() {
-    return parseInt(localStorage.getItem("hiscore"));
+    return parseInt(localStorage.getItem("hiscore")) || 0;
 }
 
 function displayHiscore() {
     const span = document.querySelector(".highscore");
     let scoreStored = getScore();
 
-    span.innerHTML = scoreStored;
+    span.innerHTML = "Highscore: " + scoreStored;
 }
-
-displayHiscore();
