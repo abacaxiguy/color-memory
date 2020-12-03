@@ -187,3 +187,6 @@ body.dark {
     background: rgb(24, 29, 43);
     color: white;
 }
+.highscore.dark{
+    color: white;
+}
