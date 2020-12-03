@@ -126,7 +126,7 @@ function starting() {
 }
 
 function toggleDarkMode() {
-    const elements = ["body", ".color", ".level", ".dark-button"];
+    const elements = ["body", ".color", ".level", ".dark-button", ".highscore"];
     elements.forEach((el) => {
         el = document.querySelectorAll(el);
         el.forEach((e) => {
