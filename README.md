@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <img alt="Anti-Procrastinator" src="./favicon.ico" />
+    <img alt="Color Memory Logo" src="./favicon.ico" />
   </p>
 
 # Color Memory
