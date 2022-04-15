@@ -3,22 +3,25 @@
     <img alt="Anti-Procrastinator" src="./favicon.ico" />
   </p>
 
-  # Color Memory
-</div>
+# Color Memory
 
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/abacaxiguy/color-memory" />
+  <img alt="Github Issues" src="https://img.shields.io/github/issues/abacaxiguy/color-memory" />
+  <a href="https://github.com/abacaxiguy" target="_blank"><img alt="Follow Me" src="https://img.shields.io/github/followers/abacaxiguy.svg?style=social&label=Follow&maxAge=2592000" /></a>
 </p>
 
-<h2 align="center">A fun game to stimulate memory made with JS.</h2>
+<h3>A fun game to stimulate memory made with JS.</h3>
 
 <br>
 
-<p align="center">
-  <img src="./img/Screenshot_7.png"/>
-  <img src="./img/Screenshot_8.png"/>
-  <img src="./img/Screenshot_10.png"/>
+<p>
+  <img src="./img/Screenshot_7.png" width="91%"/>
+  <img src="./img/Screenshot_8.png" width="45%"/>
+  <img src="./img/Screenshot_10.png" width="45%"/>
 </p>
+  
+</div>
 
 ---
 
