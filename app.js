@@ -15,6 +15,7 @@ let playerTurn = false,
 
 function addNewColor() {
     let isConsecutive = false;
+    
     while (!isConsecutive) {
         let random = Math.floor(Math.random() * 6);
         if (random != sequence[sequence.length - 1]) {
@@ -61,17 +62,16 @@ function letPlayerClick(e) {
     e.target.classList.add("active");
 
     audios.forEach((a) => {
-        if (a.getAttribute("data-audio") == e.target.getAttribute("data-color"))
-            a.play();
+        if (a.getAttribute("data-audio") == e.target.getAttribute("data-color")) a.play();
     });
 
     setTimeout(() => {
         e.target.classList.remove("active");
     }, 500);
 
-    if (e.target.getAttribute("data-color") != sequence[timesClicked]) {
-        youLost();
-    } else if (timesClicked == sequence.length - 1) {
+    if (e.target.getAttribute("data-color") != sequence[timesClicked]) youLost();
+    
+    else if (timesClicked == sequence.length - 1) {
         addNewColor();
         level++;
         putLevelNumber(level);
@@ -100,21 +100,27 @@ function putLevelNumber(n) {
 }
 
 function toggleColorClick(state) {
-    if (state)
-        colors.forEach((c) => {
-            c.classList.add("playing");
-        });
-    else
-        colors.forEach((c) => {
-            c.classList.remove("playing");
-        });
+    if (state) colors.forEach((c) => { c.classList.add("playing"); });
+        
+    else colors.forEach((c) => { c.classList.remove("playing"); });
 }
 
-start.addEventListener("click", starting);
+function setScore(score) {
+    let scoreStored = getScore();
+    if (scoreStored > score) return;
+    localStorage.setItem("hiscore", "" + score);
+}
 
-colors.forEach((c) => {
-    c.addEventListener("click", letPlayerClick);
-});
+function getScore() {
+    return parseInt(localStorage.getItem("hiscore")) || 0;
+}
+
+function displayHiscore() {
+    const span = document.querySelector(".highscore");
+    let scoreStored = getScore();
+
+    span.innerHTML = "Highscore: " + scoreStored;
+}
 
 function starting() {
     start.classList.add("playing");
@@ -136,23 +142,13 @@ function toggleDarkMode() {
     });
 }
 
-document
-    .querySelector(".dark-button")
-    .addEventListener("click", toggleDarkMode);
+// Dark mode Event Listener
+document.querySelector(".dark-button").addEventListener("click", toggleDarkMode);
 
-function setScore(score) {
-    let scoreStored = getScore();
-    if (scoreStored > score) return;
-    localStorage.setItem("hiscore", "" + score);
-}
+// Start Event Listener
+start.addEventListener("click", starting);
 
-function getScore() {
-    return parseInt(localStorage.getItem("hiscore")) || 0;
-}
-
-function displayHiscore() {
-    const span = document.querySelector(".highscore");
-    let scoreStored = getScore();
-
-    span.innerHTML = "Highscore: " + scoreStored;
-}
+// Buttons Event Listener
+colors.forEach((c) => {
+    c.addEventListener("click", letPlayerClick);
+});
