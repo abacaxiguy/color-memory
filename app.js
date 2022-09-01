@@ -77,7 +77,7 @@ function letPlayerClick(e) {
         putLevelNumber(level);
         setTimeout(() => {
             playAllSequence(0);
-        }, 2000);
+        }, 1000);
     }
 }
 
