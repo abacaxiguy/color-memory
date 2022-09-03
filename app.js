@@ -35,6 +35,7 @@ function playAllSequence(number) {
         if (c.getAttribute("data-color") == i) c.classList.add("active");
     });
     audios.forEach((a) => {
+        
         if (a.getAttribute("data-audio") == i) a.play();
     });
 
@@ -51,7 +52,7 @@ function playAllSequence(number) {
             timesClicked = -1;
             start.innerHTML = "Click!";
         }
-    }, 1000);
+    }, 500);
 }
 
 function letPlayerClick(e) {
