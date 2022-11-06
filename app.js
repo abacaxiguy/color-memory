@@ -9,6 +9,7 @@ const colors = document.querySelectorAll(".color"),
     errorAudio = document.querySelector(".error");
 
 let playerTurn = false,
+    muted = false,
     timesClicked = -1,
     level = 1,
     sequence = [];
@@ -34,10 +35,12 @@ function playAllSequence(number) {
     colors.forEach((c) => {
         if (c.getAttribute("data-color") == i) c.classList.add("active");
     });
-    audios.forEach((a) => {
-        
-        if (a.getAttribute("data-audio") == i) a.play();
-    });
+
+    if (!muted) {
+        audios.forEach((a) => {
+            if (a.getAttribute("data-audio") == i) a.play();
+        });   
+    }
 
     setTimeout(() => {
         colors.forEach((c) => {
@@ -61,10 +64,12 @@ function letPlayerClick(e) {
     timesClicked++;
 
     e.target.classList.add("active");
-
-    audios.forEach((a) => {
-        if (a.getAttribute("data-audio") == e.target.getAttribute("data-color")) a.play();
-    });
+    
+    if (!muted) {
+        audios.forEach((a) => {
+            if (a.getAttribute("data-audio") == e.target.getAttribute("data-color")) a.play();
+        });
+    }
 
     setTimeout(() => {
         e.target.classList.remove("active");
@@ -83,7 +88,7 @@ function letPlayerClick(e) {
 }
 
 function youLost() {
-    errorAudio.play();
+    if (!muted) errorAudio.play();
     timesClicked = -1;
     toggleColorClick(true);
     start.classList.remove("playing");
@@ -145,6 +150,13 @@ function toggleDarkMode() {
 
 // Dark mode Event Listener
 document.querySelector(".dark-button").addEventListener("click", toggleDarkMode);
+
+// Mute button Event Listener
+document.querySelector(".mute-button").addEventListener("click", (e) => {
+    e.target.innerText = e.target.innerText === "🔇" ? "🔈" : "🔇";
+    muted = !muted;
+
+});
 
 // Start Event Listener
 start.addEventListener("click", starting);
