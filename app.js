@@ -89,6 +89,7 @@ function letPlayerClick(e) {
 
 function youLost() {
     if (!muted) errorAudio.play();
+    alert("You lost! :(\nYour score was: " + level);
     timesClicked = -1;
     toggleColorClick(true);
     start.classList.remove("playing");
