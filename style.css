@@ -194,7 +194,7 @@ body.dark {
     background: rgb(24, 29, 43);
 }
 
-.level.dark {
+body.dark .level {
     color: white;
 }
 
@@ -218,17 +218,17 @@ body.dark {
     margin-bottom: 1rem;
 }
 
-.dark-button.dark {
+body.dark .dark-button {
     background: white;
     color: rgb(24, 29, 43);
 }
 
-.dark-button.dark:hover {
+body.dark .dark-button:hover {
     border-color: white;
     background: rgb(24, 29, 43);
     color: white;
 }
 
-.highscore.dark{
+body.dark .highscore{
     color: white;
 }

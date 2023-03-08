@@ -14,6 +14,9 @@ let playerTurn = false,
     level = 1,
     sequence = [];
 
+// Dark mode
+if (localStorage.getItem("dark") === "true") document.body.classList.add("dark");
+
 function addNewColor() {
     let isConsecutive = false;
     
@@ -139,14 +142,9 @@ function starting() {
 }
 
 function toggleDarkMode() {
-    const elements = ["body", ".color", ".level", ".dark-button", ".highscore"];
-    elements.forEach((el) => {
-        el = document.querySelectorAll(el);
-        el.forEach((e) => {
-            if (e.classList.contains("dark")) e.classList.remove("dark");
-            else e.classList.add("dark");
-        });
-    });
+    document.body.classList.toggle("dark");
+    if (document.body.classList.contains("dark")) localStorage.setItem("dark", "true");
+    else localStorage.setItem("dark", "false");
 }
 
 // Dark mode Event Listener
